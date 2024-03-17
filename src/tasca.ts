@@ -13,12 +13,14 @@ export class Llista {
     afegirTasca(descripcio: string) {
         // this.buscarTasca(tasca.descripcio) == -1 ? this.tasques.push(tasca) : console.log(`La tasca seleccionada ja està en la llista`)
 
-        if (this.buscarTasca(descripcio) == -1) {
+        let posicio: number = this.buscarTasca(descripcio)
+        if (posicio == -1) {
             const novaTasca: Tasca = {
                 descripcio: descripcio,
                 completada: false
             }
             this.tasques.push(novaTasca)
+            console.log("La tasca s'ha afegit correctament")
         } else {
             console.log("Aquesta tasca ja existeix")
         }
@@ -26,8 +28,10 @@ export class Llista {
     }
 
     eliminarTasca(descripcio: string) {
-        if (this.buscarTasca(descripcio) != -1) {
-            this.tasques.splice(this.buscarTasca(descripcio), 1)
+        let posicio: number = this.buscarTasca(descripcio)
+
+        if (posicio != -1) {
+            this.tasques.splice(posicio, 1)
             console.log("S'ha eliminat la tasca correctament")
 
         } else {
@@ -38,8 +42,12 @@ export class Llista {
     }
 
     completarTasca(descripcio: string) {
-        if (this.buscarTasca(descripcio) != -1) {
-            this.tasques[this.buscarTasca(descripcio)].completada = !this.tasques[this.buscarTasca(descripcio)].completada
+        let posicio: number = this.buscarTasca(descripcio)
+
+        if (posicio != -1) {
+            this.tasques[posicio].completada = !this.tasques[posicio].completada
+        } else {
+            console.log("Aquesta tasca no existeix")
         }
 
     }

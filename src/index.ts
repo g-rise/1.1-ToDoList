@@ -29,4 +29,5 @@ llista.eliminarTasca("Bere tanto vino")
 
 // Completar una tasca
 llista.completarTasca("Bere un Negroni")
-console.log(llista)
+console.log(llista.tasques)
+
